@@ -1,0 +1,44 @@
+# Electrical
+
+  The inflight electronics is designed to never fail recovery staging.  There are two identical flight controllers (Arudino Pro Minis, FC1 and FC2), on totally independent power busses (PB1, PB2) and power supplies (BATT1, BATT2).  They each receive data from independent altimeters (ALT1, ALT2).  Each has the ability to trigger parachute (PARA) or floatation (FLOAT) deployment.  In addition, each logs data to a dedicated logger (LOG1, LOG2, writing to an SD card, DISK1, DISK2).  They each receive input from a high-resolution color video camera (CAM1, CAM2), which they write to disk.  FC1 maintains a ground connection via a radio link (FM), keeps track of location via GPS (GPS), and monitors flight dynamics via an 6-DOF inertial measurement unit (IMU).
+  
+  RECOV1 <-- FC1: IMU, Logger, ALT1, CAM1, GPA, FM 
+
+  RECOV1 <-- FC2: Logger, ALT2, CAM2
+
+# Parts
+
+  All prices are from SparkFun.
+
+  OpenLog
+    2 x $24.95 = $49.90
+    Power: 3.3V, 6mA
+    Pins: SPI
+  
+  ArduIMU Sensor Board - Six Degrees of Freedom (Main)
+    1 x $44.95 = $44.95
+    Power: 3.3V, 4.8 mA + 0.35 mA
+    Pins: SPI
+  
+  CMOS Camera - 1300x1040
+    2 x $9.95 = $19.90
+    Power: ???
+    Pins: I2C
+  
+  Arduino Pro Mini 328 - 5V/16MHz
+    2 x $18.95 = $37.90
+    Power: 5V, 2 mA
+    Pins available: 1x I2C, 1x SPI, 6x analog in?, 16x analog in?
+  
+  Barometric Pressure Sensor - BMP085 Breakout
+    2 x $19.95 = $39.90
+    Power: 3.3V, 0.05 mA
+    Pins: SPI
+  
+  Venus GPS with SMA Connector
+    1 x $49.95 = $49.95
+    Power: 3.3V, 38 mA
+    Pins: UART
+  
+  Modem Long Range 433MHz: UM12
+    Power: ???

@@ -1,0 +1,13 @@
+# Motor (Powered Flight)
+
+  HyperTEK Max-M 5478cc 98mm HT-M5478-98-MS
+  Total impulse: 10098 N-s
+  Initial thrust: 365 lb
+  Burn time: 9.7 s
+  
+  The HyperTEK Max-M 5478 is a nitrous oxide fueled hybrid motor.
+  
+# Parts
+
+  HyperTEK Max-M 5478cc 98mm HT-M5478-98-MS
+  1 x $460 = $460 (ref: http://www.nowhybrids.com/HT-prod.html)

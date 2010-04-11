@@ -1,0 +1,14 @@
+# Physical Construction
+
+  We're using Blue Tube from Apogee Components (http://www.apogeerockets.com/blue_tubes.asp).
+  
+  Given our current electronics and motor design, we can use the 2.0 75/48 (3.0" I.D. / 3.062 O.D.), which is $30 for 48".
+  
+  A big concern are the flight control surfaces (i.e., fins), especially given the fact that we're expecting to hit speeds above mach 2.
+  
+  TODO: Someone should work out Max-Q for the ascent using a standard missile body design.
+
+# Parts
+
+  Apogee Blue Tube 75/48
+  1 x $29.95 = $29.95 (ref: http://www.apogeerockets.com/blue_tubes.asp)

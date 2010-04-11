@@ -1,3 +1,4 @@
 # Rocketry notes
 
  Why do we have an IMU?  There's no onboard guidance...
+   - We'll need it for the UAV anyway, it's not that expensive, and it'll be interesting to see the data.
