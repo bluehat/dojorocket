@@ -1,10 +1,24 @@
-# Electrical
+# Electrical Overview
 
   The inflight electronics is designed to never fail recovery staging.  There are two identical flight controllers (Arudino Pro Minis, FC1 and FC2), on totally independent power busses (PB1, PB2) and power supplies (BATT1, BATT2).  They each receive data from independent altimeters (ALT1, ALT2).  Each has the ability to trigger parachute (PARA) or floatation (FLOAT) deployment.  In addition, each logs data to a dedicated logger (LOG1, LOG2, writing to an SD card, DISK1, DISK2).  They each receive input from a high-resolution color video camera (CAM1, CAM2), which they write to disk.  FC1 maintains a ground connection via a radio link (FM), keeps track of location via GPS (GPS), and monitors flight dynamics via an 6-DOF inertial measurement unit (IMU).
-  
-  RECOV1 <-- FC1: IMU, Logger, ALT1, CAM1, GPA, FM 
 
-  RECOV1 <-- FC2: Logger, ALT2, CAM2
+  {PARA, FLOAT} <-- FC1: IMU, Logger, ALT1, CAM1, GPA, FM 
+
+  {PARA, FLOAT} <-- FC2: Logger, ALT2, CAM2
+
+  Note there are four SPI devices on FC1 and 2 on FC2 and one SPI bus on each.  This means that Katy gets to arbitrate the SPI bus.  Yay!
+  
+# Recovery
+
+  During ascent the entire recover system should be disarmed.  That is, a "deploy parachute" or "deploy floatation" command send to the recovery system should be NOPed.  At apogee, we'll want to arm recovery.  The algorithm basically goes:
+
+    * FC1 will be the first to sense apogee via its IMU.  It will then arm the recovery system on FC1.
+    * If FC1 has not armed the recovery system by the time it detects decreasing altitude via ALT1, it arms the recovery system on FC1.
+    * When FC2 detects decreasing altitude via ALT2, it arms the recovery system on FC2.
+    * At 5,000 feet as measured by EITHER altimeter, parachute deployment is triggered by whichever FC receives notice first.  If all goes well, both will attempt to deploy parachutes.
+    * At 1,000 feet as measured by EITHER altimeter, floatation deployment is triggered by whichever FC receives notice first.  If all goes well, both will attempt to deploy floatation.
+
+  We want to make it EXTREMELY difficult for recovery to fail.  Lawndarting the rocket is a huge safety hazard and should be basically impossible.
 
 # Parts
 
